@@ -1,3 +1,5 @@
+#include <unistd.h>
+
 #include "Server.hpp"
 
 int main(int argc, char const* argv[]){
@@ -6,6 +8,7 @@ int main(int argc, char const* argv[]){
 		server.startConnection();
 		server.receiveString();
 		server.sendString(server.getBuffer());
+		server.endConnection();
     }
 	return 0;
 }

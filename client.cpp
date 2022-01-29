@@ -20,7 +20,7 @@ void communicateWithServer(Client& client, std::string& message){
 int main(int argc, char const* argv[]){
     uint8_t messageStart;
     std::string message, line, id;
-    Client client(9001);
+    Client client(9001, "127.0.0.1");
     uint64_t test = 0;
 
     id = std::to_string(generateID()) + ": ";
