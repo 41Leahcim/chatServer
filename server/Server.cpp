@@ -38,6 +38,7 @@ void Server::sendString(const char *message) const{
     if(length < 0){
         std::cerr << "ERROR: Failed to send message!\n";
     }
+    usleep(1);
 }
 
 void Server::receiveString(){
@@ -51,8 +52,26 @@ void Server::receiveString(){
         exit(EXIT_FAILURE);
     }
     buffer[length] = '\0';
+    usleep(1);
 }
 
 const char* Server::getBuffer() const{
     return buffer;
+}
+
+void Server::storeMessage(){
+    manager.addMessage(getBuffer());
+}
+
+
+std::string Server::getMessage(uint32_t index) const{
+    return manager.getMessage(index);
+}
+
+void Server::removeMessage(uint32_t index){
+    manager.removeMessage(index);
+}
+
+uint32_t Server::getNumberOfMessages() const{
+    return manager.getNumberOfMessages();
 }

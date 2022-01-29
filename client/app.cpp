@@ -9,11 +9,16 @@ uint32_t generateID(){
 }
 
 void communicateWithServer(Client& client, std::string& message){
+    while(system("clear") == -1);
     client.startConnection();
     client.sendString(message.c_str());
     client.receiveString();
-
-    puts(client.getBuffer());
+    message = client.getBuffer();
+    do{
+        std::cout << message << "\n";
+        client.receiveString();
+        message = client.getBuffer();
+    }while(message != "END" && message != "");
     client.endConnection();
 }
 

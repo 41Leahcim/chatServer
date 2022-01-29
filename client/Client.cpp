@@ -22,6 +22,7 @@ void Client::startConnection(){
 
 void Client::sendString(const char *message) const{
     send(sockD, message, strlen(message), 0);
+    usleep(1);
 }
 
 void Client::receiveString(){
@@ -35,6 +36,7 @@ void Client::receiveString(){
         exit(EXIT_FAILURE);
     }
     buffer[length] = '\0';
+    usleep(1);
 }
 
 const char* Client::getBuffer() const{
